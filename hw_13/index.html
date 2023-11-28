@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home work 13</title>
+</head>
+<body>
+    <script>
+        'use strict'
+
+        //1.
+        const sayHello = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log('Hi!');
+            }, 3000);
+        });
+
+
+        //2.
+        function delay() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => resolve(), 4000);
+            }); 
+        }
+
+        async function doTask() {
+           console.log('first call');
+           await delay();
+           console.log('second call');
+        }
+        doTask();
+
+
+        //3.
+        function createDice() {
+            let promiseRandNumber = new Promise((resolve, reject) => {
+                let min = 0;
+                let max = 10;
+                let randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+
+                if (randomNum >= 6) resolve();
+                else reject();
+            });
+            return promiseRandNumber;
+        };
+
+        function createThreePromises() {
+            let prOne = createDice();
+            let prTwo = createDice();
+            let prThree = createDice();
+
+            Promise.all([prOne, prTwo, prThree])
+            .then(() => {console.log('You are lucky!')})
+            .catch(() => {console.log('Not today!')})
+        };
+        createThreePromises();
+
+    </script>
+</body>
+</html>

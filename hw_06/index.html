@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Home work 06</title>
+</head>
+
+<body>
+   <script>
+      //1.
+      const numArray = [...Array(15)].map(el => Math.floor(Math.random() * 20));
+      console.log(numArray);
+      // let num = 15; // number of elem
+      // numArray.length = num;
+      // for (let i = 0; i < num; i++) {
+      //    numArray[i] = Math.floor(Math.random() * 20);
+      // };
+      // console.log(numArray);
+
+
+      //2.
+      const result = numArray.filter((arr) => {
+         if (arr % 3 === 0) {
+            return arr;
+         }
+      });
+      console.log(`Numbers divisible by 3: ${result}`);
+
+      //3.
+      const resultTwo = numArray.find((arr) => {
+         if (arr > 7) {
+            return arr;
+         }
+         else if (!arr > 7) {
+            console.log('All elements are less than 7');
+         }
+      });
+      console.log(`First element which is more than 7: ${resultTwo}`);
+
+      //4.
+      const modifiedResult = numArray.map((val) => {
+         return val * 2;
+      });
+      console.log(`Array, each element is * 2: ${modifiedResult}`);
+
+      //5.
+      console.log(`The sum of every even elements: 
+      ${(numArray.reduce((sum, n) => sum + n * !(n & 1), 0))}`);
+
+      //6.
+      console.log(`Before slice 1st elem: ${numArray}`);
+      console.log(`After slice 1st elem: ${numArray.slice(1)}`);
+      console.log(`After slice last elem: ${numArray.slice(1, 14)}`);
+
+      //7.
+      const arrayOne = ['dog', 'cat', 'bird', 'rabbit', 'horse'];
+      const arrayTwo = ['apple', 'car', 'cat', 'ball', 'horse']; // 'cat', 'horse'
+
+      const arrayNew = arrayOne.filter(item => arrayTwo.includes(item));
+
+      console.log(arrayNew);
+
+      // let arrayNew = [];
+
+      // for (let key of arrayOne) {
+      //    for (let i of arrayTwo) {
+      //       if (arrayOne[key] === arrayTwo[i]) {
+      //          arrayNew = [key];
+      //       }
+      //    }
+      // }
+      // console.log(arrayNew); // находит только 'horse'
+   </script>
+</body>
+
+</html>
